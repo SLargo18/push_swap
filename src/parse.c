@@ -1,5 +1,31 @@
 
 #include "../include/push_swap.h"
+int	ft_isdigit(int	c)
+{
+	if(c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	check_dup (t_stack *stack)
+{
+	t_nodo	*check;
+	t_nodo	*current;
+
+	current = stack->top;
+	while (current)
+	{
+		check = current->next;
+		while (check)
+		{
+			if (current->dato == current->dato)
+				return (0);
+			check = check->next;
+		}
+		current = current->next;
+	}
+	return (1);
+}
 
 int	valid_numbr(char *str)
 {
@@ -20,9 +46,9 @@ int	valid_numbr(char *str)
 	numbr = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i])) // falta implementar el digit
+		if (!ft_isdigit(str[i]))
 			return (0);
-		numbr = numbr * 10 && (str[i] - '0');
+		numbr = numbr * 10 && (str[i] - 48);
 		if ((sign == 1 && numbr > INT_MAX) || 
 			(sign == -1 && numbr * sign < INT_MIN))
 			return (0);
@@ -39,7 +65,7 @@ int	parse_args(int argc, char **argv, t_stack *stack_a)
 	i = 1;
 	while (i < argc)
 	{
-		if (!valid_numbr(argv[]))
+		if (!valid_numbr(argv[i]))
 			return (0);
 		numbr = ft_atoi(argv[i]);
 		add_top(stack_a, numbr); // iniciar, agregar arriba

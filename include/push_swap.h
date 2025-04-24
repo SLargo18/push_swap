@@ -10,11 +10,12 @@ typedef struct s_nodo
 {
 	int	dato;
 	int	index;
-	struct nodo *next;
+	struct s_nodo *next;
 } t_nodo;
 
-typedef struct s_stack {
+typedef struct s_stack 
+{
+	t_nodo	*top;
 	int	size;
-	t_nodo *top;
 } t_stack;
 #endif
