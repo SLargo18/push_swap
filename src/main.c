@@ -35,7 +35,7 @@ void	exit_error(t_stack *stack_a, t_stack *stack_b)
 		free_stack(stack_a);
 	if (stack_a)
 		free_stack(stack_b);
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr("Error\n", 2);
 	exit(1);
 }
 

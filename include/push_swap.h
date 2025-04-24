@@ -19,6 +19,7 @@ typedef struct s_stack
 	int	size;
 } t_stack;
 
-void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr(char *s, int fd);
+int	ft_isdigit(int	c);
 
 #endif

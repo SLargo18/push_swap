@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr(char *s, int fd)
 {
 	int	i;
 
@@ -12,4 +12,9 @@ void	ft_putstr_fd(char *s, int fd)
 		write(fd, &s[i], 1);
 		i++;
 	}
+}
+
+int	ft_isdigit(int	c)
+{
+	return(c >= '0' && c <= '9');
 }
