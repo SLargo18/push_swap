@@ -1,4 +1,5 @@
 #include "../include/push_swap.h"
+
 int	init_stack(void)
 {
 	t_stack	*new_s;
@@ -36,6 +37,20 @@ void	exit_error(t_stack *stack_a, t_stack *stack_b)
 		free_stack(stack_b);
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
