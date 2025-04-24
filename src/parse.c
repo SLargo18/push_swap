@@ -1,5 +1,6 @@
 
 #include "../include/push_swap.h"
+
 int	ft_isdigit(int	c)
 {
 	if(c >= '0' && c <= '9')
@@ -7,7 +8,7 @@ int	ft_isdigit(int	c)
 	return (0);
 }
 
-int	check_dup (t_stack *stack)
+int	check_dup(t_stack *stack)
 {
 	t_nodo	*check;
 	t_nodo	*current;
@@ -25,6 +26,28 @@ int	check_dup (t_stack *stack)
 		current = current->next;
 	}
 	return (1);
+}
+
+void	set_indx(t_stack *stack)
+{
+	t_nodo	*current;
+	t_nodo	*compare;
+	int		indx;
+
+	current = stack->top;
+	while (current)
+	{
+		indx = 0;
+		compare = stack->top;
+		while (compare)
+		{
+			if (current->dato > compare->dato)
+				indx++;
+			compare = compare->next;
+		}
+		current->index = indx;
+		current = current->next;
+	}
 }
 
 int	valid_numbr(char *str)
@@ -68,11 +91,11 @@ int	parse_args(int argc, char **argv, t_stack *stack_a)
 		if (!valid_numbr(argv[i]))
 			return (0);
 		numbr = ft_atoi(argv[i]);
-		add_top(stack_a, numbr); // iniciar, agregar arriba
+		add_top(stack_a, numbr);
 		i++;
 	}
 	if (!check_dup(stack_a))
 		return (0);
-	assign_indx(stack_a); // posicionar en index
+	set_indx(stack_a);
 	return (1);
 }

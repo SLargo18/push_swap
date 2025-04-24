@@ -18,4 +18,7 @@ typedef struct s_stack
 	t_nodo	*top;
 	int	size;
 } t_stack;
+
+void	ft_putstr_fd(char *s, int fd);
+
 #endif
