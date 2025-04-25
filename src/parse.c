@@ -9,10 +9,11 @@ int	check_dup(t_stack *stack)
 	current = stack->top;
 	while (current)
 	{
+
 		check = current->next;
 		while (check)
 		{
-			if (current->dato == current->dato)
+			if (current->dato == check->dato)
 				return (0);
 			check = check->next;
 		}
