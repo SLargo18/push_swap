@@ -52,7 +52,7 @@ int	valid_numbr(char *str)
 
 	i = 0;
 	sign = 1;
-	if (str[1] == '-' || str[1] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign = -1;
@@ -64,7 +64,7 @@ int	valid_numbr(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
+			return(free(str), (0));
 		numbr = numbr * 10 + (str[i] - 48);
 		if ((sign == 1 && numbr > INT_MAX) || 
 			(sign == -1 && numbr * sign < INT_MIN))
@@ -86,10 +86,7 @@ int	process_arg(char *arg, t_stack *stack_a)
 	while (split[i])
 	{
 		if (!valid_numbr(split[i]))
-		{
-			free_split(split, i);
-			return (0);
-		}
+			return (free_split(split, i), (0));
 		numbr = ft_atoi(split[i]);
 		add_top(stack_a, numbr);
 		i++;
