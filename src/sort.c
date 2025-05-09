@@ -34,6 +34,51 @@ void	sort_three(t_stack *stack_a)
 		rra(stack_a, 1);
 }
 
+void	sort_four(t_stack *stack_a, t_stack *stack_b)
+{
+	int	min_pos;
+
+	min_pos = find_min_pos(stack_a);
+	if (min_pos == 1)
+		sa(stack_a, 1);
+	else if(min_pos == 2)
+	{
+		ra(stack_a, 1);
+		ra(stack_a, 1);
+	}
+	else if(min_pos == 3)
+		rra(stack_a, 1);
+	pb(stack_a, stack_b, 1);
+	sort_three(stack_a);
+	pa(stack_b, stack_a, 1);
+}
+
+int    find_min_pos(t_stack *stack)
+{
+    t_nodo    *current;
+    int        min;
+    int        position;
+    int        min_pos;
+
+    current = stack->top;
+    min = INT_MAX;
+    position = 0;
+    min_pos = 0;
+    
+    while (current)
+    {
+        if (current->dato < min)
+        {
+            min = current->dato;
+            min_pos = position;
+        }
+        current = current->next;
+        position++;
+    }
+    
+    return (min_pos);
+}
+
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size;
