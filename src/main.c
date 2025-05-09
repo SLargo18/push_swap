@@ -31,8 +31,8 @@ int	main(int argc, char **argv)
 		free_stack(stack_b);
 		exit_error(NULL, NULL);
 	}
-	// if (!is_sorted(stack_a))
-	// 	sort_stack(stack_a, stack_b); // aca es para hacer alg
+	if (!is_sorted(stack_a))
+		sort_stack(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return(0);
