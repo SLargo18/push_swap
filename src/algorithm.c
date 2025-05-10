@@ -16,7 +16,85 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+static	int	get_size(int stack_size)
+{
+	if (stack_size <= 100)
+		return (15);
+	else 
+		return (30);
+}
+
+static	void	push_blocks(t_stack *stack_a, t_stack *stack_b, int max_c, int *counts)
+{
+	if (stack_a->top->index <= max_c)
+	{
+		pb(stack_a, stack_b, 1);
+		if (stack_b->top->index > max_c - get_size(stack_a->size) / 2)
+			rb (stack_b, 1);
+		counts[0]++;
+		counts[1]++;
+	}
+	else
+		ra(stack_a, 1);
+}
+
+static	void	rotate_pos(t_stack *stack_b, int max_i)
+{
+	if (max_i <= stack_b->size / 2)
+	{
+		while (max_i > 0)
+		{
+			rb(stack_b, 1);
+			max_i--;
+		}
+	}
+	else
+	{
+		while (max_i < stack_b->size)
+		{
+			rrb(stack_b, 1);
+			max_i++;
+		}
+	}
+}
+
+static	void	push_b(t_stack *stack_a, t_stack *stack_b)
+{
+	int	i;
+	int	counts[2];
+	int	size;
+
+	i = 0;
+	size = get_size(stack_a->size);
+	while (stack_a->size > 0)
+	{
+		counts[0] = 0;
+		counts[1] = 1;
+		while (counts[1] < size && stack_a->size > 0)
+			push_blocks(stack_a, stack_b, i + size, counts);
+		i += counts[0];
+ 	}
+}
+
+static	void	sort_btoa(t_stack *stack_a, t_stack *stack_b)
+{
+	int	max_i;
+
+	while (stack_a->size > 0)
+	{
+		max_i = find_max_ip(stack_b);
+		rotate_pos(stack_b, max_i);
+		pa(stack_b, stack_a, 1);
+	}
+}
+
 void	k_sort(t_stack *stack_a, t_stack *stack_b)
+{
+	push_b(stack_a, stack_b);
+	sort_btoa(stack_a, stack_b);
+}
+
+/*void	k_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 	int	j;
@@ -71,4 +149,4 @@ void	k_sort(t_stack *stack_a, t_stack *stack_b)
 		}
 		pa(stack_b, stack_a, 1);
 	}
-}
+}*/
