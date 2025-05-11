@@ -30,5 +30,5 @@ void	pb(t_stack *stack_a, t_stack *stack_b, int show)
 	stack_b->size++;
 	stack_a->size--;
 	if (show)
-		ft_putstr("pa\n", 1);
+		ft_putstr("pb\n", 1);
 }
