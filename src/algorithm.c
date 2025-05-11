@@ -9,7 +9,7 @@ int	is_sorted(t_stack *stack)
 	current = stack->top;
 	while (current->next)
 	{
-		if (current->dato > current->next->dato)
+		if (current->dato < current->next->dato)
 			return (0);
 		current = current->next;
 	}
