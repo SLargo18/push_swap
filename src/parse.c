@@ -106,38 +106,16 @@ int	process_arg(char *arg, t_stack *stack_a)
 	return (1);
 }
 
-int	process_arg(char *arg, t_stack *stack_a)
-{
-	char	**split;
-	long	numbr;
-	int		i;
-
-	split = ft_split(arg, ' ');
-	if (!split)
-		return (0);
-	i = 0;
-	while (split[i])
-	{
-		if (!valid_numbr(split[i]))
-			return (free_split(split, i), (0));
-		numbr = ft_atoi(split[i]);
-		add_top(stack_a, numbr);
-		i++;
-	}
-	free_split(split, i);
-	return (1);
-}
-
 int	parse_args(int argc, char **argv, t_stack *stack_a)
 {
 	int		i;
 
-	i = 1;
-	while (i < argc)
+	i = argc - 1;
+	while (i > 0)
 	{
 		if (!process_arg(argv[i], stack_a))
 			return (0);
-		i++;
+		i--;
 	}
 	if (!check_dup(stack_a))
 		return (0);
