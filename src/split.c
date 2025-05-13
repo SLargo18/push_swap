@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 12:05:17 by slargo-b          #+#    #+#             */
+/*   Updated: 2025/05/13 12:06:52 by slargo-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../include/push_swap.h"
 
-static size_t    count_words(const char *s, char c)
+static size_t	count_words(const char *s, char c)
 {
 	size_t		count;
 	int			inside_word;
@@ -46,12 +58,12 @@ static char	*get_next_word(const char **s, char c)
 
 void	free_split(char **result, size_t i)
 {
-    while (i > 0)
-    {
-        i--;
-        free(result[i]);
-    }
-    free(result);
+	while (i > 0)
+	{
+		i--;
+		free(result[i]);
+	}
+	free(result);
 }
 
 char	**ft_split(char const *s, char c)

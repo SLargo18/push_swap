@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 12:05:01 by slargo-b          #+#    #+#             */
+/*   Updated: 2025/05/13 12:10:03 by slargo-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void	exit_error(t_stack *stack_a, t_stack *stack_b)
@@ -35,5 +47,5 @@ int	main(int argc, char **argv)
 		sort_stack(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
-	return(0);
+	return (0);
 }
