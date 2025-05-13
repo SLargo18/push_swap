@@ -73,7 +73,7 @@ static	void	push_b(t_stack *stack_a, t_stack *stack_b)
 		while (counts[1] < size && stack_a->size > 0)
 			push_blocks(stack_a, stack_b, i + size, counts);
 		i += counts[0];
- 	}
+	}
 }
 
 static	void	sort_btoa(t_stack *stack_a, t_stack *stack_b)

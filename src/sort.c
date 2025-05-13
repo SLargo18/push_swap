@@ -20,7 +20,7 @@ void	sort_three(t_stack *stack_a)
 	{
 		sa(stack_a, 1);
 		ra(stack_a, 1);
-	} 
+	}
 	else if (one > two && two < three && one > three)
 		ra (stack_a, 1);
 	else if (one > two && two > three)
@@ -41,12 +41,12 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 	min_pos = find_min_pos(stack_a);
 	if (min_pos == 1)
 		sa(stack_a, 1);
-	else if(min_pos == 2)
+	else if (min_pos == 2)
 	{
 		ra(stack_a, 1);
 		ra(stack_a, 1);
 	}
-	else if(min_pos == 3)
+	else if (min_pos == 3)
 		rra(stack_a, 1);
 	pb(stack_a, stack_b, 1);
 	sort_three(stack_a);
@@ -141,6 +141,6 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 		sort_four(stack_a, stack_b);
 	else if (size == 5)
 		sort_five(stack_a, stack_b);
-	else 
+	else
 		k_sort(stack_a, stack_b);
 }
