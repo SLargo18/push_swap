@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 12:05:04 by slargo-b          #+#    #+#             */
+/*   Updated: 2025/05/13 12:09:55 by slargo-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../include/push_swap.h"
 
@@ -64,15 +76,36 @@ int	valid_numbr(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return(free(str), (0));
+			return (free(str), (0));
 		numbr = numbr * 10 + (str[i] - 48);
-		if ((sign == 1 && numbr > INT_MAX) || 
-			(sign == -1 && numbr * sign < INT_MIN))
+		if ((sign == 1 && numbr > INT_MAX) || (sign == -1 && numbr * sign < INT_MIN))
 			return (0);
 		i++;
 	}
 	return (1);
 }
+int	process_arg(char *arg, t_stack *stack_a)
+{
+	char	**split;
+	long	numbr;
+	int		i;
+
+	split = ft_split(arg, ' ');
+	if (!split)
+		return (0);
+	i = 0;
+	while (split[i])
+	{
+		if (!valid_numbr(split[i]))
+			return (free_split(split, i), (0));
+		numbr = ft_atoi(split[i]);
+		add_top(stack_a, numbr);
+		i++;
+	}
+	free_split(split, i);
+	return (1);
+}
+
 int	process_arg(char *arg, t_stack *stack_a)
 {
 	char	**split;
@@ -103,7 +136,7 @@ int	parse_args(int argc, char **argv, t_stack *stack_a)
 	while (i < argc)
 	{
 		if (!process_arg(argv[i], stack_a))
-		return (0);
+			return (0);
 		i++;
 	}
 	if (!check_dup(stack_a))

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 12:05:26 by slargo-b          #+#    #+#             */
+/*   Updated: 2025/05/13 12:06:12 by slargo-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void	ft_putstr(char *s, int fd)
@@ -14,11 +26,32 @@ void	ft_putstr(char *s, int fd)
 	}
 }
 
-int	ft_isdigit(int	c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
-	return(0);
+	return (0);
+}
+
+int	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	j;
+
+	j = 0;
+	while (src[j])
+		j++;
+	if (size == 0)
+		return (j);
+	i = 0;
+	while (i < (size - 1) && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (j);
+
 }
 
 int	ft_strlcpy(char *dst, const char *src, size_t size)
@@ -44,10 +77,10 @@ int	ft_strlcpy(char *dst, const char *src, size_t size)
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	long result;
-	
+	int		i;
+	int		sign;
+	long	result;
+
 	i = 0;
 	result = 0;
 	sign = 1;

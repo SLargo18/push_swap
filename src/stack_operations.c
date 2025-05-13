@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_operations.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 12:05:21 by slargo-b          #+#    #+#             */
+/*   Updated: 2025/05/13 12:06:34 by slargo-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void	free_stack(t_stack *stack)
@@ -34,7 +46,7 @@ void	add_top(t_stack *stack, int dato)
 	t_nodo	*new_n;
 
 	new_n = (t_nodo *)malloc(sizeof(t_nodo));
-	if(!new_n)
+	if (!new_n)
 		return ;
 	new_n->dato = dato;
 	new_n->index = 0;
@@ -49,7 +61,7 @@ int	remove_top(t_stack *stack)
 	int		dato;
 
 	if (!stack->top)
-		return(0);
+		return (0);
 	temp = stack->top;
 	dato = temp->dato;
 	stack->top = stack->top->next;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithm.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 12:04:56 by slargo-b          #+#    #+#             */
+/*   Updated: 2025/05/13 12:11:35 by slargo-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 int	is_sorted(t_stack *stack)
@@ -20,7 +32,7 @@ static	int	get_size(int stack_size)
 {
 	if (stack_size <= 100)
 		return (15);
-	else 
+	else
 		return (30);
 }
 
