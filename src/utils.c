@@ -21,6 +21,27 @@ int	ft_isdigit(int	c)
 	return(0);
 }
 
+int	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	j;
+
+	j = 0;
+	while (src[j])
+		j++;
+	if (size == 0)
+		return (j);
+	i = 0;
+	while (i < (size - 1) && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (j);
+
+}
+
 int	ft_atoi(const char *str)
 {
 	int	i;

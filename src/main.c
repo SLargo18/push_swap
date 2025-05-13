@@ -6,7 +6,7 @@ void	exit_error(t_stack *stack_a, t_stack *stack_b)
 		free_stack(stack_a);
 	if (stack_b)
 		free_stack(stack_b);
-	ft_putstr("Error\n", 2);
+	ft_putstr("Error\n", 1);
 	exit(1);
 }
 
@@ -31,9 +31,9 @@ int	main(int argc, char **argv)
 		free_stack(stack_b);
 		exit_error(NULL, NULL);
 	}
-	// if (!is_sorted(stack_a))
-	// 	sort_stack(stack_a, stack_b); // aca es para hacer alg
-	// free_stack(stack_a);
-	// free_stack(stack_b);
-	// return(0);
+	if (!is_sorted(stack_a))
+		sort_stack(stack_a, stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
+	return(0);
 }

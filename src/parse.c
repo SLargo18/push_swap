@@ -52,7 +52,7 @@ int	valid_numbr(char *str)
 
 	i = 0;
 	sign = 1;
-	if (str[1] == '-' || str[1] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign = -1;
@@ -64,8 +64,8 @@ int	valid_numbr(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
-		numbr = numbr * 10 && (str[i] - 48);
+			return(free(str), (0));
+		numbr = numbr * 10 + (str[i] - 48);
 		if ((sign == 1 && numbr > INT_MAX) || 
 			(sign == -1 && numbr * sign < INT_MIN))
 			return (0);
@@ -73,19 +73,37 @@ int	valid_numbr(char *str)
 	}
 	return (1);
 }
+int	process_arg(char *arg, t_stack *stack_a)
+{
+	char	**split;
+	long	numbr;
+	int		i;
+
+	split = ft_split(arg, ' ');
+	if (!split)
+		return (0);
+	i = 0;
+	while (split[i])
+	{
+		if (!valid_numbr(split[i]))
+			return (free_split(split, i), (0));
+		numbr = ft_atoi(split[i]);
+		add_top(stack_a, numbr);
+		i++;
+	}
+	free_split(split, i);
+	return (1);
+}
 
 int	parse_args(int argc, char **argv, t_stack *stack_a)
 {
 	int		i;
-	long	numbr;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (!valid_numbr(argv[i]))
-			return (0);
-		numbr = ft_atoi(argv[i]);
-		add_top(stack_a, numbr);
+		if (!process_arg(argv[i], stack_a))
+		return (0);
 		i++;
 	}
 	if (!check_dup(stack_a))
