@@ -48,6 +48,7 @@ void	rb(t_stack *stack_b, int show)
 		ft_putstr("rb\n", 1);
 }
 
+
 void	rr(t_stack *stack_a, t_stack *stack_b, int show)
 {
 	ra(stack_a, 0);
