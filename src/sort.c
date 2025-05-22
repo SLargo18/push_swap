@@ -138,6 +138,7 @@ int	find_max_ip(t_stack *stack)
 	}
 	return (max_i);
 }
+
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size;

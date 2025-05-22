@@ -92,9 +92,10 @@ static	void	sort_btoa(t_stack *stack_a, t_stack *stack_b)
 {
 	int	max_i;
 
-	while (stack_a->size > 0)
+	while (stack_b->size >= 0)
 	{
 		max_i = find_max_ip(stack_b);
+		printf("aa");
 		rotate_pos(stack_b, max_i);
 		pa(stack_b, stack_a, 1);
 	}
