@@ -30,24 +30,29 @@ int	is_sorted(t_stack *stack)
 
 static	int	get_size(int stack_size)
 {
-	if (stack_size <= 100)
-		return (15);
-	else
-		return (30);
+	int	size;
+
+	size = stack_size;
+	while (size * size < stack_size)
+		size++;
+	return ((int)(size * 1.33));
 }
 
-static	void	push_blocks(t_stack *stack_a, t_stack *stack_b, int max_c, int *counts)
+static	void	push_blocks(t_stack *stack_a, t_stack *stack_b, int max_c, int *pushed)
 {
-	if (stack_a->top->index <= max_c)
+	if (stack_a->top->index <= *pushed)
 	{
 		pb(stack_a, stack_b, 1);
-		if (stack_b->top->index > max_c - get_size(stack_a->size) / 2)
-			rb (stack_b, 1);
-		counts[0]++;
-		counts[1]++;
+		(*pushed)++;
+	}
+	else if (stack_a->top->index <= max_c)
+	{
+		pb(stack_a, stack_b, 1);
+		rb(stack_b, 1);
+		(*pushed)++;
 	}
 	else
-		ra(stack_a, 1);
+		ra (stack_a, 1);
 }
 
 static	void	rotate_pos(t_stack *stack_b, int max_i)
@@ -72,19 +77,18 @@ static	void	rotate_pos(t_stack *stack_b, int max_i)
 
 static	void	push_b(t_stack *stack_a, t_stack *stack_b)
 {
-	int	i;
-	int	counts[2];
 	int	size;
+	int	pushed;
+	int	total_size;
+	int	max_block;
 
-	i = 0;
 	size = get_size(stack_a->size);
-	while (stack_a->size > 0)
+	total_size = stack_a->size;
+	pushed = 0;
+	while (stack_a->size > 0 && pushed < total_size)
 	{
-		counts[0] = 0;
-		counts[1] = 1;
-		while (counts[1] < size && stack_a->size > 0)
-			push_blocks(stack_a, stack_b, i + size, counts);
-		i += counts[0];
+		max_block = pushed + size;
+		push_blocks(stack_a, stack_b, max_block, &pushed);
 	}
 }
 
@@ -92,10 +96,9 @@ static	void	sort_btoa(t_stack *stack_a, t_stack *stack_b)
 {
 	int	max_i;
 
-	while (stack_b->size >= 0)
+	while (stack_b->size > 0)
 	{
 		max_i = find_max_ip(stack_b);
-		printf("aa");
 		rotate_pos(stack_b, max_i);
 		pa(stack_b, stack_a, 1);
 	}
