@@ -79,7 +79,7 @@ int	valid_numbr(char *str)
 			return (0);
 		numbr = numbr * 10 + (str[i] - 48);
 		if ((sign == 1 && numbr > INT_MAX) || 
-		(sign == -1 && numbr * sign > (long) INT_MAX + 1))
+		(sign == -1 && numbr > (long) INT_MAX + 1))
 			return (0);
 		i++;
 	}
