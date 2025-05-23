@@ -6,7 +6,7 @@
 /*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:05:26 by slargo-b          #+#    #+#             */
-/*   Updated: 2025/05/13 12:06:12 by slargo-b         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:44:12 by slargo-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	ft_strlcpy(char *dst, const char *src, size_t size)
 	}
 	dst[i] = '\0';
 	return (j);
-
 }
 
 int	ft_atoi(const char *str)

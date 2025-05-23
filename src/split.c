@@ -6,10 +6,9 @@
 /*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:05:17 by slargo-b          #+#    #+#             */
-/*   Updated: 2025/05/13 12:06:52 by slargo-b         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:43:53 by slargo-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../include/push_swap.h"
 
@@ -91,5 +90,4 @@ char	**ft_split(char const *s, char c)
 	}
 	result[i] = NULL;
 	return (result);
-
 }

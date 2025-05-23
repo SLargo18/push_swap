@@ -6,27 +6,11 @@
 /*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:04:56 by slargo-b          #+#    #+#             */
-/*   Updated: 2025/05/13 12:11:35 by slargo-b         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:51:40 by slargo-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-int	is_sorted(t_stack *stack)
-{
-	t_nodo	*current;
-
-	if (!stack->top)
-		return (1);
-	current = stack->top;
-	while (current->next)
-	{
-		if (current->dato > current->next->dato)
-			return (0);
-		current = current->next;
-	}
-	return (1);
-}
 
 static int	get_size(int size)
 {
@@ -55,23 +39,6 @@ static void	push_blocks(t_stack *stack_a, t_stack *stack_b,
 		ra(stack_a, 1);
 }
 
-static void	push_b(t_stack *stack_a, t_stack *stack_b)
-{
-	int	size;
-	int	pushed;
-	int	total;
-	int	max_c;
-
-	size = get_size(stack_a->size);
-	pushed = 0;
-	total = stack_a->size;
-	while (stack_a->size > 0 && pushed < total)
-	{
-		max_c = pushed + size;
-		push_blocks(stack_a, stack_b, max_c, &pushed);
-	}
-}
-
 static void	rotate_pos(t_stack *stack_b, int max_i)
 {
 	if (max_i <= stack_b->size / 2)
@@ -86,7 +53,7 @@ static void	rotate_pos(t_stack *stack_b, int max_i)
 	}
 }
 
-static void	sort_btoa(t_stack *stack_a, t_stack *stack_b)
+void	sort_btoa(t_stack *stack_a, t_stack *stack_b)
 {
 	int	max_i;
 
@@ -98,10 +65,19 @@ static void	sort_btoa(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void	k_sort(t_stack *stack_a, t_stack *stack_b)
+void	push_b(t_stack *stack_a, t_stack *stack_b)
 {
-	if (is_sorted(stack_a))
-		return ;
-	push_b(stack_a, stack_b);
-	sort_btoa(stack_a, stack_b);
+	int	size;
+	int	pushed;
+	int	total;
+	int	max_c;
+
+	size = get_size(stack_a->size);
+	pushed = 0;
+	total = stack_a->size;
+	while (stack_a->size > 0 && pushed < total)
+	{
+		max_c = pushed + size;
+		push_blocks(stack_a, stack_b, max_c, &pushed);
+	}
 }
