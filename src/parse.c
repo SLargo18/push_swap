@@ -6,9 +6,10 @@
 /*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:05:04 by slargo-b          #+#    #+#             */
-/*   Updated: 2025/05/23 19:24:19 by slargo-b         ###   ########.fr       */
+/*   Updated: 2025/05/23 19:42:29 by slargo-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../include/push_swap.h"
 
@@ -20,6 +21,7 @@ int	check_dup(t_stack *stack)
 	current = stack->top;
 	while (current)
 	{
+
 		check = current->next;
 		while (check)
 		{
@@ -62,9 +64,9 @@ int	valid_numbr(char *str)
 
 	i = 0;
 	sign = 1;
-	if (str[i++] == '-' || str[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			sign = -1;
 	}
 	if (!str[i])
