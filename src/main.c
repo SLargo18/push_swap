@@ -32,17 +32,9 @@ int	main(int argc, char **argv)
 	stack_a = init_stack();
 	stack_b = init_stack();
 	if (!stack_a || !stack_b)
-	{
-		free_stack(stack_a);
-		free_stack(stack_b);
-		exit_error(NULL, NULL);
-	}
+		exit_error(stack_a, stack_b);
 	if (!parse_args(argc, argv, stack_a))
-	{
-		free_stack(stack_a);
-		free_stack(stack_b);
-		exit_error(NULL, NULL);
-	}
+		exit_error(stack_a, stack_b);
 	if (!is_sorted(stack_a))
 		sort_stack(stack_a, stack_b);
 	free_stack(stack_a);

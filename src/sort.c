@@ -62,7 +62,7 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 		rra(stack_a, 1);
 	pb(stack_a, stack_b, 1);
 	sort_three(stack_a);
-	pa(stack_b, stack_a, 1);
+	pa(stack_a, stack_b, 1);
 }
 
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
@@ -88,7 +88,7 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 	}
 	pb(stack_a, stack_b, 1);
 	sort_four (stack_a, stack_b);
-	pa (stack_b, stack_a, 1);
+	pa (stack_a, stack_b, 1);
 }
 
 int	find_min_pos(t_stack *stack_a)
@@ -138,7 +138,6 @@ int	find_max_ip(t_stack *stack)
 	}
 	return (max_i);
 }
-
 void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size;

@@ -76,14 +76,16 @@ int	valid_numbr(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (free(str), (0));
+			return (0);
 		numbr = numbr * 10 + (str[i] - 48);
-		if ((sign == 1 && numbr > INT_MAX) || (sign == -1 && numbr * sign < INT_MIN))
+		if ((sign == 1 && numbr > INT_MAX) || 
+		(sign == -1 && numbr * sign > (long) INT_MAX + 1))
 			return (0);
 		i++;
 	}
 	return (1);
 }
+
 int	process_arg(char *arg, t_stack *stack_a)
 {
 	char	**split;
