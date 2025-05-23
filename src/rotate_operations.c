@@ -6,7 +6,7 @@
 /*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:05:11 by slargo-b          #+#    #+#             */
-/*   Updated: 2025/05/13 12:07:36 by slargo-b         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:42:50 by slargo-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	rb(t_stack *stack_b, int show)
 	if (show)
 		ft_putstr("rb\n", 1);
 }
-
 
 void	rr(t_stack *stack_a, t_stack *stack_b, int show)
 {

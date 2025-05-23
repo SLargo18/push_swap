@@ -6,7 +6,7 @@
 /*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:05:14 by slargo-b          #+#    #+#             */
-/*   Updated: 2025/05/13 12:07:09 by slargo-b         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:43:13 by slargo-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ void	sort_two(t_stack *stack_a)
 void	sort_three(t_stack *stack_a)
 {
 	int	one;
-	int two;
-	int three;
+	int	two;
+	int	three;
 
 	one = stack_a->top->dato;
 	two = stack_a->top->next->dato;
 	three = stack_a->top->next->next->dato;
-
 	if (one < two && two > three && one < three)
 	{
 		sa(stack_a, 1);
@@ -89,70 +88,4 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 	pb(stack_a, stack_b, 1);
 	sort_four (stack_a, stack_b);
 	pa (stack_a, stack_b, 1);
-}
-
-int	find_min_pos(t_stack *stack_a)
-{
-	t_nodo	*current;
-	int		i;
-	int		min;
-	int		min_pos;
-
-	current = stack_a->top;
-	min = INT_MAX;
-	i = 0;
-	min_pos = 0;
-	while (current)
-	{
-		if (current->dato < min)
-		{
-			min = current->dato;
-			min_pos = i;
-		}
-		current = current->next;
-		i++;
-	}
-	return (min_pos);
-}
-
-int	find_max_ip(t_stack *stack)
-{
-	t_nodo	*current;
-	int		i;
-	int		max_i;
-	int		max_indx;
-
-	current = stack->top;
-	i = 0;
-	max_i = 0;
-	max_indx = -1;
-	while (current)
-	{
-		if (current->index > max_indx)
-		{
-			max_indx = current->index;
-			max_i = i;
-		}
-		current = current->next;
-		i++;
-	}
-	return (max_i);
-}
-void	sort_stack(t_stack *stack_a, t_stack *stack_b)
-{
-	int	size;
-
-	size = stack_a->size;
-	if (is_sorted(stack_a))
-		return ;
-	if (size == 2)
-		sort_two(stack_a);
-	else if (size == 3)
-		sort_three(stack_a);
-	else if (size == 4)
-		sort_four(stack_a, stack_b);
-	else if (size == 5)
-		sort_five(stack_a, stack_b);
-	else
-		k_sort(stack_a, stack_b);
 }

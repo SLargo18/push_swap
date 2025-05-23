@@ -1,33 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 18:33:48 by slargo-b          #+#    #+#             */
+/*   Updated: 2025/05/23 18:49:54 by slargo-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <stdio.h>
 
 typedef struct s_nodo
 {
-	int	dato;
-	int	index;
-	struct s_nodo *next;
-} t_nodo;
+	int				dato;
+	int				index;
+	struct s_nodo	*next;
+}	t_nodo;
 
-typedef struct s_stack 
+typedef struct s_stack
 {
 	t_nodo	*top;
-	int	size;
-} t_stack;
+	int		size;
+}	t_stack;
 
 t_stack	*init_stack(void);
-int		ft_isdigit(int	c);
+int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 int		ft_strlcpy(char *dst, const char *src, size_t size);
 int		parse_args(int argc, char **argv, t_stack *stack_a);
 char	**ft_split(char const *s, char c);
 void	free_split(char **result, size_t i);
 void	ft_putstr(char *s, int fd);
-void	free_stack (t_stack *stack);
+void	free_stack(t_stack *stack);
 void	add_top(t_stack *stack, int dato);
 void	exit_error(t_stack *stack_a, t_stack *stack_b);
 void	sort_two(t_stack *stack_a);
@@ -48,12 +60,14 @@ void	rrb(t_stack *stack_b, int show);
 void	rrr(t_stack *stack_a, t_stack *stack_b, int show);
 void	ra(t_stack *stack_a, int show);
 void	rb(t_stack *stack_b, int show);
-void 	rr(t_stack *stack_a, t_stack *stack_b, int show);
+void	rr(t_stack *stack_a, t_stack *stack_b, int show);
 void	sa(t_stack *stack_a, int show);
 void	sb(t_stack *stack_b, int show);
 void	ss(t_stack *stack_a, t_stack *stack_b, int show);
 void	pa(t_stack *stack_a, t_stack *stack_b, int show);
 void	pb(t_stack *stack_a, t_stack *stack_b, int show);
+void	sort_btoa(t_stack *stack_a, t_stack *stack_b);
+void	push_b(t_stack *stack_a, t_stack *stack_b);
 int		remove_top(t_stack *stack);
 int		empty_s(t_stack *stack);
 
