@@ -6,7 +6,7 @@
 /*   By: slargo-b <slargo-b@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:05:04 by slargo-b          #+#    #+#             */
-/*   Updated: 2025/05/23 18:42:03 by slargo-b         ###   ########.fr       */
+/*   Updated: 2025/05/23 19:24:19 by slargo-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,10 @@ int	valid_numbr(char *str)
 
 	i = 0;
 	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i++] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign = -1;
-		i++;
 	}
 	if (!str[i])
 		return (0);
@@ -76,8 +75,8 @@ int	valid_numbr(char *str)
 		if (!ft_isdigit(str[i]))
 			return (0);
 		numbr = numbr * 10 + (str[i] - 48);
-		if ((sign == 1 && numbr > INT_MAX) ||
-			(sign == -1 && numbr > (long) INT_MAX + 1))
+		if ((sign == 1 && numbr > INT_MAX)
+			|| (sign == -1 && numbr > (long) INT_MAX + 1))
 			return (0);
 		i++;
 	}
