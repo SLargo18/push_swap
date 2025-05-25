@@ -84,8 +84,33 @@ int	valid_numbr(char *str)
 	}
 	return (1);
 }
-
 int	process_arg(char *arg, t_stack *stack_a)
+{
+	char	**split;
+	long	numbr;
+	int		i;
+	int		count;
+
+	split = ft_split(arg, ' ');
+	if (!split)
+		return (0);
+	count = 0;
+	while (split[count])
+		count++;
+	i = count - 1;
+	while (i >= 0)
+	{
+		if (!valid_numbr(split[i]))
+			return (free_split(split, count), (0));
+		numbr = ft_atoi(split[i]);
+		add_top(stack_a, numbr);
+		i--;
+	}
+	free_split(split, count);
+	return (1);
+}
+
+/*int	process_arg(char *arg, t_stack *stack_a)
 {
 	char	**split;
 	long	numbr;
@@ -105,7 +130,7 @@ int	process_arg(char *arg, t_stack *stack_a)
 	}
 	free_split(split, i);
 	return (1);
-}
+}*/
 
 int	parse_args(int argc, char **argv, t_stack *stack_a)
 {
