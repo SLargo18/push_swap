@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/push_swap.h"
 
 int	check_dup(t_stack *stack)
@@ -21,7 +20,6 @@ int	check_dup(t_stack *stack)
 	current = stack->top;
 	while (current)
 	{
-
 		check = current->next;
 		while (check)
 		{
@@ -84,6 +82,7 @@ int	valid_numbr(char *str)
 	}
 	return (1);
 }
+
 int	process_arg(char *arg, t_stack *stack_a)
 {
 	char	**split;
@@ -109,28 +108,6 @@ int	process_arg(char *arg, t_stack *stack_a)
 	free_split(split, count);
 	return (1);
 }
-
-/*int	process_arg(char *arg, t_stack *stack_a)
-{
-	char	**split;
-	long	numbr;
-	int		i;
-
-	split = ft_split(arg, ' ');
-	if (!split)
-		return (0);
-	i = 0;
-	while (split[i])
-	{
-		if (!valid_numbr(split[i]))
-			return (free_split(split, i), (0));
-		numbr = ft_atoi(split[i]);
-		add_top(stack_a, numbr);
-		i++;
-	}
-	free_split(split, i);
-	return (1);
-}*/
 
 int	parse_args(int argc, char **argv, t_stack *stack_a)
 {
