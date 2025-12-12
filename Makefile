@@ -64,6 +64,17 @@ fclean: clean
 
 re: fclean all
 
+normi:
+	@echo "$(MAGENTA)Checking Norminette...$(RESET)"
+	@norminette $(FILES) | grep "Error\|Warning" > /tmp/normi_result || true
+	@if [ -s /tmp/normi_result ]; then \
+		echo "$(RED)Failure found in:"; \
+		cat /tmp/normi_result; \
+	else \
+		echo "$(GREEN)Norminette passed!$(RESET)"; \
+	fi
+	@rm -f /tmp/normi_result
+
 test: $(NAME)
 	@echo "$(BLUE)Running tests...$(RESET)"
 	@echo "$(CYAN)Test 1: Simple case$(RESET)"
@@ -103,6 +114,7 @@ help:
 	@echo "  $(GREEN)clean$(RESET)            - Remove object files"
 	@echo "  $(GREEN)fclean$(RESET)           - Remove object files and executable"
 	@echo "  $(GREEN)re$(RESET)               - Rebuild everything"
+	@echo "  $(GREEN)normi(RESTET)            - Check norminette"
 	@echo "  $(GREEN)debug$(RESET)            - Build with debug flags"
 	@echo "  $(GREEN)test$(RESET)             - Run basic tests"
 	@echo "  $(GREEN)test-performance$(RESET) - Test with 100 numbers"
